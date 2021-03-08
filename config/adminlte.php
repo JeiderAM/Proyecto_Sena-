@@ -186,7 +186,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => '/materials',
+    'dashboard_url' => '/users',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -234,17 +234,21 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'Nueva',
-            'url'  => 'materials/create',
+            'text'        => 'Usuarios',
+            'url'         => 'users',
+             'icon'        => 'fas fa-users fa-faw',
             
         ],
+       
         [
             'text'        => 'Materiales',
             'url'         => 'materials',
-            /* 'icon'        => 'far fa-fw fa-file',
+             'icon'        => 'far fa-fw fa-file',
             'label'       => '',
-            'label_color' => 'success', */
+            'label_color' => 'success', 
         ],
+
+
         ['header' => 'Configuración de la cuenta'],
         [
             'text' => 'Perfil de usuario',

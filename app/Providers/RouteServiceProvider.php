@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
 
 
-    public const HOME = '/materials';
+    public const HOME = '/materials ';
 
         
 
@@ -45,9 +45,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
+                ->group(base_path('routes/api.php'));   
 
             Route::middleware('web')
+               
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
