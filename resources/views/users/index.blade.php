@@ -7,6 +7,8 @@
 @stop
 
 @section('content')
+
+
 <table id="users" class="table table-secondary table-striped table-bordered mt-4 shadow-lg" style="width:100%"> 
     <thead class="table table-primary">
         <tr class="text-bold">

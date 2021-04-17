@@ -237,6 +237,7 @@ return [
             'text'        => 'Usuarios',
             'url'         => 'users',
              'icon'        => 'fas fa-users fa-faw',
+             'can'         => 'users.index',
             
         ],
        
@@ -245,7 +246,8 @@ return [
             'url'         => 'materials',
              'icon'        => 'far fa-fw fa-file',
             'label'       => '',
-            'label_color' => 'success', 
+            'label_color' => 'success',
+            'can'         => 'materials.index', 
         ],
 
 
