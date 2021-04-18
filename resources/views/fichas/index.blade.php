@@ -9,6 +9,15 @@
 @stop
 
 @section('content')
+
+@if (session('info'))
+    <div class="alert alert-success">
+        <strong>{{session('info')}}</strong>
+
+    </div>
+
+    @endif
+    
 <a href="fichas/create" type="button" class="btn btn-outline-success float-right"> Agregar</a>
 
 <table id="fichas" class="table table-success table-striped table-bordered mt-4 shadow-lg" style="width:100%"> 
@@ -17,26 +26,26 @@
             <th scope="col">ID</th>
             <th scope="col">Fecha de creación</th>
             <th scope="col">Nombre del elemento</th>
-            <th colspan="2">Acciones</th>    
+            <th scope="col">Acciones</th>    
         </tr>    
     </thead>
     <tbody>
     @foreach ($fichas as $ficha)
-    <tr class="mt-4">
-        <td>{{$ficha->id}}</td>
-        <td>{{$ficha->fecha}}</td>
-        <td>{{$ficha->nombre_elemento}}</td>
+    <tr class="mt-3">
+            <td>{{$ficha->id}}</td>
+            <td>{{$ficha->fecha}}</td>
+            <td>{{$ficha->nombre_elemento}}</td>
         
-        <td with="10px"><a href="/fichas/{{$ficha->id}}/edit" class="btn btn-info">Editar</a></td>
-        <td with="10px">
-            <form action="{{route('fichas.destroy',$ficha->id)}}" method="POST">
+        <td >
+            <form action="{{route('fichas.destroy',$ficha)}}" method="POST">
+            <a href="{{route('fichas.edit',$ficha)}}" class="btn btn-info md-4">Editar</a>
             <button type="submit" onclick="return confirm('¿Quieres borrar esta casilla?')" class="btn btn-primary">Borrar</button>
             @csrf 
             @method('DELETE')  
             </form>
         </td>
-    </tr>
-    @endforeach    
+     </tr>
+         @endforeach    
     </tbody>
 </table>
 @stop

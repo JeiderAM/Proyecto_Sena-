@@ -9,6 +9,28 @@
     
 @section('content')
 
+    @if (session('info'))
+    <div class="alert alert-success">
+        <strong>{{session('info')}}</strong>
+
+    </div>
+
+    @endif
+
+    <div class="card-body">
+        {!! Form::model($ficha, ['route' => ['fichas.update', $ficha], 'autocomplete' => 'off', 'method' => 'put']) !!}
+
+
+        {!! Form::hidden('user_id', auth()->user()->id) !!}
+         
+        @include('fichas.partials.form')
+      
+       {!! Form::submit('Actualizar ficha', ['class' => 'btn btn-success' ]) !!}
+       
+        {!! Form::close() !!}
+
+    </div>
+
 @stop
 
 @section('css')
@@ -16,5 +38,19 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+<script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#condiciones' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        ClassicEditor
+        .create( document.querySelector( '#accesorios' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
 @stop

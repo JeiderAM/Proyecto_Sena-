@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ficha;
 use App\Models\Centro;
-use App\Http\Requests\StoreFichaRequest;
+use App\Http\Requests\FichaRequest;
 
 class FichaController extends Controller
 {
@@ -38,7 +38,7 @@ class FichaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFichaRequest $request)
+    public function store(FichaRequest $request)
     {
         $ficha = Ficha::create($request->all());
 
@@ -65,7 +65,12 @@ class FichaController extends Controller
      */
     public function edit(Ficha $ficha)
     {
-        return view ('fichas.edit' , compact('ficha'));
+       
+        $centros = Centro::pluck('nombre', 'id');
+        
+       
+       
+        return view ('fichas.edit' , compact('ficha', 'centros'));
         
     }
 
@@ -76,9 +81,11 @@ class FichaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ficha $ficha )
+    public function update(FichaRequest $request, Ficha $ficha )
     {
-        //
+       $ficha->update($request->all());
+
+       return redirect()->route('fichas.edit', $ficha)->with('info', 'Se actualizo la ficha');
     }
 
     /**
@@ -89,6 +96,10 @@ class FichaController extends Controller
      */
     public function destroy(Ficha $ficha)
     {
-      
+        $ficha->delete();
+
+        return redirect()->route('fichas.index')->with('info', 'La ficha se eliminó con éxito');
+
+
     }
 }
