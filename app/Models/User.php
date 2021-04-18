@@ -65,4 +65,11 @@ class User extends Authenticatable
 
         return "Administrador";
     }
+    //Relacion uno a muchos
+
+    public function fichas(){
+        return $this->hasMany(Fichas::class);
+
+    }
+    
 }

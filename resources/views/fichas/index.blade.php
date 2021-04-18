@@ -5,38 +5,31 @@
 
 
 @section('content_header')
-    <h1>Materiales</h1>
+    <h1>Listado de fichas</h1>
 @stop
 
 @section('content')
-<a href="materials/create" type="button" class="btn btn-outline-info mb-3 "> Agregar</a>
+<a href="fichas/create" type="button" class="btn btn-outline-success float-right"> Agregar</a>
 
-<table id="materials" class="table table-secondary table-striped table-bordered mt-4 shadow-lg" style="width:100%"> 
-    <thead class="table table-primary">
+<table id="fichas" class="table table-success table-striped table-bordered mt-4 shadow-lg" style="width:100%"> 
+    <thead class="table table-light">
         <tr class="text-bold">
             <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Código</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Unidad</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Detalles</th>
-            <th scope="col">Acciones</th>   
+            <th scope="col">Fecha de creación</th>
+            <th scope="col">Nombre del elemento</th>
+            <th colspan="2">Acciones</th>    
         </tr>    
     </thead>
     <tbody>
-   @foreach ($materials as $material)
+    @foreach ($fichas as $ficha)
     <tr class="mt-4">
-        <td>{{$material->id}}</td>
-        <td>{{$material->nombre}}</td>
-        <td>{{$material->codigo}}</td>
-        <td>{{$material->descripcion}}</td>
-        <td>{{$material->tipo}}</td>
-        <td>{{$material->cantidad}}</td>
-        <td>{{$material->detalles}}</td>
-        <td >
-            <form action="{{route('materials.destroy',$material->id)}}" method="POST">
-            <a href="/materials/{{$material->id}}/edit" class="btn btn-info">Editar</a>
+        <td>{{$ficha->id}}</td>
+        <td>{{$ficha->fecha}}</td>
+        <td>{{$ficha->nombre_elemento}}</td>
+        
+        <td with="10px"><a href="/fichas/{{$ficha->id}}/edit" class="btn btn-info">Editar</a></td>
+        <td with="10px">
+            <form action="{{route('fichas.destroy',$ficha->id)}}" method="POST">
             <button type="submit" onclick="return confirm('¿Quieres borrar esta casilla?')" class="btn btn-primary">Borrar</button>
             @csrf 
             @method('DELETE')  
@@ -61,7 +54,7 @@
 
     <script>
     $(document).ready(function() {
-    $('#materials').DataTable( {
+    $('#fichas').DataTable( {
         resposive: true,
         autoWidth: false,
         

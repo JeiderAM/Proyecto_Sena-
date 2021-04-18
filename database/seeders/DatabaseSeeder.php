@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Centro;
+use App\Models\Ficha;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,6 +19,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+        Centro::factory(5)->create();
+        Ficha::factory(10)->create();
 
     }
 }

@@ -233,14 +233,8 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'Usuarios',
-            'url'         => 'users',
-             'icon'        => 'fas fa-users fa-faw',
-             'can'         => 'users.index',
-            
-        ],
        
+        ['header' => 'Sección de materiales'],
         [
             'text'        => 'Materiales',
             'url'         => 'materials',
@@ -249,9 +243,27 @@ return [
             'label_color' => 'success',
             'can'         => 'materials.index', 
         ],
+        ['header' => 'Sección de fichas'],
+        [
+            'text'        => 'Listado de fichas',
+            'route'         => 'fichas.index',
+             'icon'        => 'fas fa-file-alt',  
+        ],
+        [
+            'text'        => 'Crear nueva ficha',
+            'route'         => 'fichas.create',
+             'icon'        => 'fas fa-plus',  
+        ],
 
 
         ['header' => 'Configuración de la cuenta'],
+        [
+            'text'        => 'Usuarios',
+            'url'         => 'users',
+             'icon'        => 'fas fa-users fa-faw',
+             'can'         => 'users.index',
+            
+        ],
         [
             'text' => 'Perfil de usuario',
             'url'  => 'user/profile',
@@ -262,13 +274,7 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        ['header' => 'Agregar usuarios'],
-        [
-            'text' => 'Nuevo usuario',
-            'url'  => 'user/register',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-
+       
       
     ],
 

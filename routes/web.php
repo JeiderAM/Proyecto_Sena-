@@ -19,7 +19,7 @@ Route::get('/', function () {
     
  
 Route::resource('materials','App\Http\Controllers\MaterialController');
-
+Route::resource('fichas','App\Http\Controllers\FichaController');
 Route::resource('users', 'App\Http\Controllers\UserController')->middleware('can:users.index')->only(['index','edit','update']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
